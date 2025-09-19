@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://ciuh8ikp25et0"]
+
+[ext_resource type="Texture2D" uid="uid://crf13iyjx135e" path="res://Assets/Icons/TestTower.png" id="1_3rsjn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3rsjn"]
+viewport_path = NodePath("ViewportQuad/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4gul"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_3rsjn")
+texture_filter = 0
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_7nnsv"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_v4gul")
+
+[node name="RadialMenu" type="Node3D"]
+
+[node name="ViewportQuad" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("QuadMesh_7nnsv")
+
+[node name="SubViewport" type="SubViewport" parent="ViewportQuad"]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="Control" type="Control" parent="ViewportQuad/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="ViewportQuad/SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ViewportQuad/SubViewport/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="ViewportQuad/SubViewport/Control/Panel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_3rsjn")
+
+[node name="TestTowerButton" type="Label" parent="ViewportQuad/SubViewport/Control/Panel/VBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -14.0
+offset_bottom = 14.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "💦 Test Tower"

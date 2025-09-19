@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bks5fam2ucxlo"]
+
+[ext_resource type="PackedScene" uid="uid://bcecb620k62hl" path="res://Assets/Project_3_Mockup.blend" id="1_2drde"]
+
+[node name="Project_3_Mockup" instance=ExtResource("1_2drde")]
+
+[node name="TestTower7" parent="." index="19"]
+transform = Transform3D(0.804015, 0, 0, 0, 0.804015, 0, 0, 0, 0.804015, 0, 0, 0)

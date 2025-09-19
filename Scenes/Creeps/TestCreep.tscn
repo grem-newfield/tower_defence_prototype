@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://e66isp1vxgrx"]
+
+[ext_resource type="Script" uid="uid://cgahn2xo0q8wu" path="res://Scenes/Creeps/TestCreep.gd" id="1_nbvjd"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f45kv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10kq7"]
+albedo_color = Color(0.981307, 0, 0.165649, 1)
+roughness = 0.33
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gdioo"]
+
+[node name="TestCreep" type="Node3D" groups=["Creeps"]]
+script = ExtResource("1_nbvjd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_f45kv")
+surface_material_override/0 = SubResource("StandardMaterial3D_10kq7")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_gdioo")

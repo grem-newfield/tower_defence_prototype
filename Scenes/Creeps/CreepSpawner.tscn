@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://btehhugu8bxs2"]
+
+[ext_resource type="Script" uid="uid://dtx1v8gbfd8ss" path="res://Scenes/Creeps/CreepSpawner.gd" id="1_k258x"]
+
+[node name="EnemySpawner" type="Node"]
+script = ExtResource("1_k258x")

@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cfiepa35ypev5"
+path="res://.godot/imported/bettercrt.glsl-5a095263081f02c0cbfdc419f3c71083.res"
+
+[deps]
+
+source_file="res://Assets/Shaders/bettercrt.glsl"
+dest_files=["res://.godot/imported/bettercrt.glsl-5a095263081f02c0cbfdc419f3c71083.res"]
+
+[params]
+
