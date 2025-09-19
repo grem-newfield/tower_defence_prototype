@@ -52,17 +52,22 @@ shadow_mesh = SubResource("ArrayMesh_1ajyy")
 radius = 16.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cj8jp"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
 gravity = Vector3(0, 0, 0)
-linear_accel_min = -30.0
-linear_accel_max = 30.0
-tangential_accel_min = -30.0
-tangential_accel_max = 30.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aa31i"]
+shading_mode = 0
+albedo_color = Color(0.931461, 0.931461, 0.931461, 1)
+texture_filter = 0
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_dj477"]
 material = SubResource("StandardMaterial3D_aa31i")
+size = Vector2(0.2, 0.2)
 
 [node name="TestTower" type="Node3D"]
 script = ExtResource("1_xlm21")
@@ -84,7 +89,10 @@ shape = SubResource("SphereShape3D_k4xmw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0673809, 2.36262, -1.87835)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Marker3D"]
-amount = 33
+emitting = false
+amount = 32
+lifetime = 0.6
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_cj8jp")
 draw_pass_1 = SubResource("QuadMesh_dj477")

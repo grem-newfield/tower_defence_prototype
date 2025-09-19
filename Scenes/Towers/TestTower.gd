@@ -17,7 +17,21 @@ func _physics_process(delta: float) -> void:
 	if target and target.is_inside_tree():
 		time_since_last_attack += delta
 		if time_since_last_attack >= (1.0 / attack_speed):
-			look_at(target.global_position)
+
+			# some tween rotation
+			var pos: Vector3 = global_position
+			var target_pos: Vector3 = target.global_position
+			var direction: Vector3 = pos - target_pos # - pos
+			direction.y = 0.0
+			direction = direction.normalized()
+
+			if direction.length() > 0.01:
+				var target_y_rotation: float = atan2(direction.x,direction.z)
+
+				var tween: Tween = create_tween()
+				tween.tween_property(self, "rotation", Vector3(0.0, target_y_rotation, 0.0), 0.2)
+
+
 			attack_target()
 			time_since_last_attack = 0.0
 
@@ -42,6 +56,8 @@ func attack_target() -> void:
 	if target and target.has_method("take_damage"):
 		var damage_dealt: float = damage # Expand with armor perhaps
 		target.take_damage(damage_dealt)
+		$Marker3D/GPUParticles3D.restart()
+		# $Marker3D/GPUParticles3D.emitting = true
 		SignalBus.tower_attacked.emit(target, damage_dealt)
 		# Optional: Add attack effects here
 

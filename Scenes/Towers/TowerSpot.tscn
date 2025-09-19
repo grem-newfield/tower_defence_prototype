@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2vkfroo0det2"]
 
 [ext_resource type="Script" uid="uid://ft45gap738l1" path="res://Scenes/Towers/TowerSpot.gd" id="1_5i5yp"]
-[ext_resource type="FontFile" uid="uid://c0tldtj2uxo42" path="res://Assets/Fonts/JetBrains Mono Regular Nerd Font Complete.ttf" id="2_b4dfi"]
+[ext_resource type="FontFile" uid="uid://da6qjho5wd4hs" path="res://Assets/Fonts/JetBrains Mono Regular Nerd Font Complete.ttf" id="2_b4dfi"]
 [ext_resource type="PackedScene" uid="uid://ciuh8ikp25et0" path="res://Scenes/RadialMenu.tscn" id="3_tt46q"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_juapy"]

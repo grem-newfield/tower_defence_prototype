@@ -7,8 +7,9 @@ var current_wave: int = 0
 var enemies_alive: int = 0
 
 func _ready() -> void:
-	SignalBus.creep_spawned.connect(_on_enemy_spawned)
-	SignalBus.creep_died.connect(_on_enemy_died)
+	SignalBus.creep_spawned.connect(_on_creep_spawned)
+	SignalBus.creep_died.connect(_on_creep_died)
+	SignalBus.creep_reached_end.connect(_on_creep_reached_end)
 	start_next_wave()
 
 func start_next_wave():
@@ -23,11 +24,20 @@ func start_next_wave():
 	EnemySpawner.spawn_wave(current_wave)
 
 
+func _on_creep_reached_end(creep: Node) -> void:
+	enemies_alive -= 1
+	SignalBus.player_health_changed.emit(creep.damage)
+	if enemies_alive <= 0:
+		if enemies_alive < 0:
+			push_error("How the fuck is enemies_alive negative?")
+			get_tree().quit()
+		SignalBus.wave_ended.emit(current_wave, true)
+		start_next_wave()
 
-func _on_enemy_spawned(enemy: Node):
+func _on_creep_spawned(enemy: Node):
 	enemies_alive += 1
 
-func _on_enemy_died(enemy: Node, currency: int):
+func _on_creep_died(enemy: Node, currency: int = 0):
 	enemies_alive -= 1
 	if enemies_alive <= 0:
 		if enemies_alive < 0:

@@ -26,20 +26,22 @@ const ANIMATION_BLEND : float = 7.0
 @onready var animator : AnimationTree = $AnimationTree
 
 func _ready() -> void:
-	# SignalBus.player_health_changed.connect(_on_health_changed)
+	SignalBus.player_health_changed.connect(take_damage)
 	SignalBus.game_over.connect(_on_game_over)
 
 func take_damage(amount: int) -> void:
 	health -= amount
-	SignalBus.player_health_changed.emit(health)
+	$HUD/TopPanel/MarginContainer/Health.text = "Health: %-3d" % health
 	if health <= 0:
 		SignalBus.game_over.emit(false)
 
 func _on_game_over(win:bool) -> void:
 	if win:
 		print("JU VIN")
+		get_tree().quit()
 	else:
 		print("JU LUUZ")
+		get_tree().quit()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("place_tower"):

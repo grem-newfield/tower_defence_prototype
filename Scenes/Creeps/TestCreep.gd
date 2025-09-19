@@ -3,7 +3,8 @@ extends Node3D
 var max_health: float = 100.0
 var health: float = max_health
 var currency_reward: int = 10
-var move_speed: float = 1.0
+var move_speed: float = 6.0
+var damage: float = 10.0
 
 @onready var path_follow: PathFollow3D = get_parent()
 
